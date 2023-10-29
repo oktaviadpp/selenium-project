@@ -1,21 +1,25 @@
 package app.entities.authentication;
 
-import common.launchWeb;
 import common.closeWeb;
+import common.launchWeb;
 import org.openqa.selenium.By;
 
-public class userSuccessfullyLogin extends launchWeb{
+import java.time.Duration;
+
+public class userCantLoginwithInvalidCredentials extends launchWeb {
     public static void main(String[] args) {
-        //launch web using common package
         new launchWeb();
 
         //open login page
         driver.get("https://secondhand.binaracademy.org/users/sign_in");
         driver.findElement(By.id("user_email")).sendKeys("oktavi@gmail.com");
-        driver.findElement(By.id("user_password")).sendKeys("123456");
+        driver.findElement(By.id("user_password")).sendKeys("1234567");
         driver.findElement(By.name("commit")).click();
 
-        //close web using common package
+        //wait error messages
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.findElement(By.xpath("//div[@role='alert']")).getText();
+
         closeWeb closeweb = new closeWeb();
         closeweb.close();
     }
