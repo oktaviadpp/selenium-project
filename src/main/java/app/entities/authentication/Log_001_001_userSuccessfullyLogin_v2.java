@@ -6,13 +6,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-public class userSuccessfullyLoginv2{
+public class Log_001_001_userSuccessfullyLogin_v2{
+    public static WebDriver driver = new ChromeDriver();
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+        login();
+    }
+    public static String login() throws InterruptedException {
+
         driver.manage().window().maximize();
         //open main page
-        driver.get("https://secondhand.binaracademy.org/");
-        driver.findElement(By.xpath("//a[@href='/users/sign_in']")).click();
+//        driver.get("https://secondhand.binaracademy.org/");
+//        driver.findElement(By.xpath("//a[@href='/users/sign_in']")).click();
 
         //call global variables class
         variables variable = new variables();
@@ -25,6 +29,8 @@ public class userSuccessfullyLoginv2{
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//div[@role=\"alert\"]")).getText(), "Signed in successfully.");
 
-        driver.close();
+        String successLogin = login();
+
+        return successLogin;
     }
 }

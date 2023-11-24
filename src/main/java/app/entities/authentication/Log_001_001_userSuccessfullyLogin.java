@@ -5,25 +5,20 @@ import common.launchWeb;
 import global.variables;
 import org.openqa.selenium.By;
 
-import java.time.Duration;
-
-public class userCantLoginwithInvalidCredentials extends launchWeb {
+public class Log_001_001_userSuccessfullyLogin extends launchWeb{
     public static void main(String[] args) {
+        //launch web using common package
         new launchWeb();
-
-        //call global variable class
+        //call global variables class
         variables variable = new variables();
 
         //open login page
         driver.get("https://secondhand.binaracademy.org/users/sign_in");
         driver.findElement(By.id("user_email")).sendKeys(variable.correctEmail);
-        driver.findElement(By.id("user_password")).sendKeys(variable.incorrectPwd);
+        driver.findElement(By.id("user_password")).sendKeys(variable.correctPwd);
         driver.findElement(By.name("commit")).click();
 
-        //wait error messages
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.findElement(By.xpath("//div[@role='alert']")).getText();
-
+        //close web using common package
         closeWeb closeweb = new closeWeb();
         closeweb.close();
     }
