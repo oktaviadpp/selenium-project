@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class dinamicDropDown {
+public class dynamicDropDown {
     static WebDriver driver;
     static WebDriverWait wait;
     public static void main(String[] args) throws InterruptedException {
@@ -17,7 +17,10 @@ public class dinamicDropDown {
         driver.findElement(By.xpath("//a[@value=\"BLR\"]")).click();
         Thread.sleep(200);
         driver.findElement(By.id("ctl00_mainContent_ddl_destinationStation1_CTXT")).click();
-        driver.findElement(By.xpath("(//a[@value=\"MAA\"])[2]")).click();
+
+        //for identify object uniquely
+        driver.findElement(By.xpath("//div[@id=\"glsctl00_mainContent_ddl_destinationStation1_CTNR\"] //a[@value=\"MAA\"]"));
+//        driver.findElement(By.xpath("(//a[@value=\"MAA\"])[2]")).click();
 
         driver.close();
     }
