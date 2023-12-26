@@ -16,11 +16,14 @@ public class dynamicDropDown {
         driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
         driver.findElement(By.xpath("//a[@value=\"BLR\"]")).click();
         Thread.sleep(200);
-        driver.findElement(By.id("ctl00_mainContent_ddl_destinationStation1_CTXT")).click();
 
         //for identify object uniquely
-        driver.findElement(By.xpath("//div[@id=\"glsctl00_mainContent_ddl_destinationStation1_CTNR\"] //a[@value=\"MAA\"]"));
-//        driver.findElement(By.xpath("(//a[@value=\"MAA\"])[2]")).click();
+        driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
+
+        //checkbox
+        driver.findElement(By.cssSelector("input[id*='friendsandfamily']")).click();
+        //count checkbox
+        System.out.println("Total checkbox is= "+driver.findElements(By.cssSelector("input[type='checkbox']")).size());
 
         driver.close();
     }
