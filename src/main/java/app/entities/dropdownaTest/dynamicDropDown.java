@@ -14,6 +14,13 @@ public class dynamicDropDown {
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 
+        //radio button
+        driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
+        if(driver.findElement(By.id("Div1")).getAttribute("style").contains("1")){
+            System.out.println("its enabled");
+            Assert.assertTrue(true);
+        }
+
         driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
         driver.findElement(By.xpath("//a[@value=\"BLR\"]")).click();
         Thread.sleep(200);
